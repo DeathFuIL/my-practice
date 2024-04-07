@@ -1,0 +1,527 @@
+databaseChangeLog:
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: account
+    id: 1700068171420-1
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: account_uuid_pk
+            name: uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: surname
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: birthday
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: address_uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: profile_photo
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: phone_number
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: position
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: hashed_password
+            type: VARCHAR
+        tableName: account
+- changeSet:
+    preConditions:
+      - onFail: MARK_RAN
+      - not:
+            tableExists:
+                tableName: address
+    id: 1700068171420-2
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: address_uuid_pk
+            name: uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: city
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: state
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: country
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: postal_code
+            type: INTEGER
+        tableName: address
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: company
+    id: 1700068171420-3
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: company_uuid_pk
+            name: uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: founding_date
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: address_uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: industry
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: phone_number
+            type: VARCHAR
+        tableName: company
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: executor
+    id: 1700068171420-4
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: account_uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: target_uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: task_uuid
+            type: UUID
+        tableName: executor
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: responsible
+    id: 1700068171420-5
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: account_uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: target_uuid
+            type: UUID
+        tableName: responsible
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: spectator
+    id: 1700068171420-6
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: account_uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: target_uuid
+            type: UUID
+        tableName: spectator
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: target
+    id: 1700068171420-7
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: target_uuid_pk
+            name: uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: date_of_creating
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: approximate_deadline
+            type: date
+        - column:
+            name: actual_deadline
+            type: date
+        tableName: target
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: task
+    id: 1700068171420-8
+    author: rasim (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: task_uuid_pk
+            name: uuid
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: VARCHAR
+        - column:
+            constraints:
+              nullable: false
+            name: date_of_creating
+            type: date
+        - column:
+            name: end_date
+            type: date
+        - column:
+            name: date_of_approval
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: is_finished
+            type: BOOLEAN
+        - column:
+            constraints:
+              nullable: false
+            name: is_in_process
+            type: BOOLEAN
+        - column:
+            constraints:
+              nullable: false
+            name: is_approved
+            type: BOOLEAN
+        - column:
+            constraints:
+              nullable: false
+            name: assigner_uuid
+            type: UUID
+        tableName: task
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: account
+    id: 1700068171420-9
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: address_uuid
+        baseTableName: account
+        constraintName: account_address_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: address
+        validate: true
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: company
+    id: 1700068171420-10
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: address_uuid
+        baseTableName: company
+        constraintName: company_address_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: address
+        validate: true
+- changeSet:
+    preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+                tableName: executor
+    id: 1700068171420-11
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: account_uuid
+        baseTableName: executor
+        constraintName: executor_account_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: account
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: executor
+    id: 1700068171420-12
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: target_uuid
+        baseTableName: executor
+        constraintName: executor_target_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: target
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: executor
+    id: 1700068171420-13
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: task_uuid
+        baseTableName: executor
+        constraintName: executor_task_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: task
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: responsible
+    id: 1700068171420-14
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: account_uuid
+        baseTableName: responsible
+        constraintName: responsible_account_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: account
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: responsible
+    id: 1700068171420-15
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: target_uuid
+        baseTableName: responsible
+        constraintName: responsible_target_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: target
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: spectator
+    id: 1700068171420-16
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: account_uuid
+        baseTableName: spectator
+        constraintName: spectator_account_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: account
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: spectator
+    id: 1700068171420-17
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: target_uuid
+        baseTableName: spectator
+        constraintName: spectator_target_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: target
+        validate: true
+- changeSet:
+    preConditions:
+    - onFail: MARK_RAN
+    - not:
+        tableExists:
+            tableName: task
+    id: 1700068171420-18
+    author: rasim (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: assigner_uuid
+        baseTableName: task
+        constraintName: task_assigner_uuid_fk
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: uuid
+        referencedTableName: account
+        validate: true
+

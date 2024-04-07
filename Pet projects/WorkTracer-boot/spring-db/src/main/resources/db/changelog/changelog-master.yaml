@@ -1,0 +1,7 @@
+exidatabaseChangeLog:
+  - include:
+      file: changeset/v1/changelog-v1.0.yaml
+      relativeToChangelogFile: true
+ - include:
+     file: changeset/v2/changelog-v2.0.yaml
+     relativeToChangelogFile: true

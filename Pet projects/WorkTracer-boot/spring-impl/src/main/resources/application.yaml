@@ -1,0 +1,27 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: 1234
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Work+Tracer
+    hikari:
+      max-pool-size: 10
+    username: postgres
+    password: postgres
+    driver:
+      classname: org.postgresql.Driver
+  session:
+    jdbc:
+      initialize-schema: always
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: true

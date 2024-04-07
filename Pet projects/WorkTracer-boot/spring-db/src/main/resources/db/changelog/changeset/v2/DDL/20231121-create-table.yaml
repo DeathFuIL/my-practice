@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: authority
+      id: 1
+      author: rasim
+      changes:
+        - sql: create type role as enum ('ROLE_ADMIN', 'ROLE_STAFF', 'ROLE_USER')
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: account_id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: authority
+                  type: role
+            tableName: authority
+        - addForeignKeyConstraint:
+            baseColumnNames: account_id
+            baseTableName: authority
+            constraintName: authority_account_id_fk
+            deferrable: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: account
+            validate: true
