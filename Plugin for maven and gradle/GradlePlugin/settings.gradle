@@ -1,0 +1,4 @@
+rootProject.name = 'AGONA-05'
+includeBuild 'src/main/java/plugin'
+include 'GradlePlugin'
+

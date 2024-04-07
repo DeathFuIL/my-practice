@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        flatDir { dirs 'build/libs' }
+    }
+    dependencies {
+        classpath 'ru.kpfu.rasim:AGONA-05-1.0-SNAPSHOT'
+    }
+}
+
+plugins {
+    id "java"
+}
+
+apply plugin: plugin.MyGradlePlugin
+
+group = 'ru.kpfu.rasim'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+test {
+    useJUnitPlatform()
+}
+
