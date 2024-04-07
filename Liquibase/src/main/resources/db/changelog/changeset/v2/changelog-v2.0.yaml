@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: DDL/20240323-merging-tables-teacher-and-student.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: DDL/20240323-delete-tables-teacher-and-student.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: DDL/20240323-modify-tables-course_and-course_students.yaml
+      relativeToChangelogFile: true

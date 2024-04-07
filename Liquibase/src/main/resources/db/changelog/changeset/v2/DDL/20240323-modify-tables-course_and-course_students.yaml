@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rasim
+      changes:
+        - sqlFile:
+            path: scripts/modify-tables-course_and-course_students.sql

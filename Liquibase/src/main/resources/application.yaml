@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostreSQLDialect
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url:
